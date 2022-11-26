@@ -7,17 +7,47 @@ import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.compon
 import { CaracteristicasEmpleadoCComponent } from './caracteristicas-empleado-c/caracteristicas-empleado-c.component';
 import { ServicioEmpleadosService } from './servicio-empleados.service';
 import { EmpleadosService } from './empleados.service';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import { ContactosComponentComponent } from './contactos-component/contactos-component.component';
+import { ProyectosComponentComponent } from './proyectos-component/proyectos-component.component';
+import { QuienesComponentComponent } from './quienes-component/quienes-component.component';
+import { RouterModule, Routes } from '@angular/router';
+import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
+import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { DataServices } from './data.services';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+
+
+const appRoutes:Routes=[
+  {path:'', component:HomeComponentComponent},
+  {path:'proyectos', component:ProyectosComponentComponent},
+  {path:'quienes', component:QuienesComponentComponent},
+  {path:'contacto', component:ContactosComponentComponent},
+  {path:'actualiza/:id', component:ActualizaComponentComponent},
+  {path:'**', component:ErrorPersonalizadoComponent}
+]
 
 @NgModule({
   declarations: [
     AppComponent,
     EmpleadoHijoCComponent,
-    CaracteristicasEmpleadoCComponent
+    CaracteristicasEmpleadoCComponent,
+    HomeComponentComponent,
+    ContactosComponentComponent,
+    ProyectosComponentComponent,
+    QuienesComponentComponent,
+    ActualizaComponentComponent,
+    LoginComponent
+  
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule,
+     FormsModule,
+      RouterModule.forRoot(appRoutes),
+      HttpClientModule,
   ],
-  providers: [ServicioEmpleadosService, EmpleadosService],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
