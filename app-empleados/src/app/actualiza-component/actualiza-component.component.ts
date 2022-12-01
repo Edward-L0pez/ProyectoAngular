@@ -56,9 +56,11 @@ if(this.accion==1){
   //this.miServicio.MuestraMensaje("Nombre del empleado: "+ miEmpleado.nombre)
     this.empleadosService.actualizarEmpleado(this.indice,miEmpleado);
     this.router.navigate(['']);
+    window.location.reload();
 }else {
     this.empleadosService.eliminarEmpleado(this.indice);
     this.router.navigate(['']);
+    window.location.reload();
 }
   }
 
